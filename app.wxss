@@ -1,0 +1,16 @@
+/**app.wxss**/
+/* rpx */
+/* 以iphone6为基准 1rpx = 1px(pc) 1px(移动端) = 2px(pc)*/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+.page {
+  font-family: "PingFangSC-Thin";
+  font-size: 32rpx;
+}
