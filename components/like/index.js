@@ -32,6 +32,11 @@ Component({
         islike: !_islike,
         count: _count
       })
+      // 自定义函数(以供传入参数))
+      let _behavior = this.properties.islike ? 'like' : 'cancel'
+      this.triggerEvent('like', {
+        behavior: _behavior
+      }, {})
     }
   }
 })

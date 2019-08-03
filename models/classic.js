@@ -5,7 +5,7 @@ class ClassicModel extends HTTP {
     this.request({
       url: 'classic/latest',
       success: res => {
-        console.log(res)
+        sCallback(res)
       }
     })
   }

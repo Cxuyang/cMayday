@@ -4,10 +4,12 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    img: '',
-    content: ''
+    img: String,
+    content: String
   },
+  attached: function () {
 
+  },
   /**
    * 组件的初始数据
    */
