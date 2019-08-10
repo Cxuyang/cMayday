@@ -24,10 +24,14 @@ Component({
    */
   methods: {
     onLeft () {
-
+      if (!this.properties.first) {
+        this.triggerEvent('left', {}, {})
+      }
     },
     onRight () {
-
+      if (!this.properties.latest) {
+        this.triggerEvent('right', {}, {})
+      }
     }
   }
 })

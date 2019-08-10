@@ -9,7 +9,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    classic: null
+    classic: null,
+    first: false,
+    latest: true,
+    likeCount: 0,
+    likeStatus: false
   },
 
   /**
@@ -18,7 +22,9 @@ Page({
   onLoad: function () {
     classicModel.getLatest(res => {
       this.setData({
-        classic: res
+        classic: res,
+        likeCount: res.fav_nums,
+        likeStatus: res.like_status
       })
     })
   },
@@ -33,6 +39,34 @@ Page({
   // 点赞时间
   onLike: function(event) {
     likeModel.like(event.detail.behavior, this.data.classic.id, this.data.classic.type)
+  },
+
+  // nav next
+  onNext: function (evnet) {
+    this._updateClassic('next')
+  },
+  // nav previous
+  onPrevious: function(evnet) {
+    this._updateClassic('previous')
+  },
+  _updateClassic: function(nextOrPrevious) {
+    const index = this.data.classic.index
+    classicModel.getClassic(index, nextOrPrevious, res => {
+      this._getLikeStatus(res.id, res.type)
+      this.setData({
+        classic: res,
+        first: classicModel.isFirst(res.index),
+        latest: classicModel.isLatest(res.index)
+      })
+    })
+  },
+  _getLikeStatus: function(artID, category) {
+    likeModel.getClassicLikeStatus(artID, category, res => {
+      this.setData({
+        likeCount: res.fav_nums,
+        likeStatus: res.like_status
+      })
+    })
   },
 
   /**
