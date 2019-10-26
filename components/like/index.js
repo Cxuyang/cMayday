@@ -9,6 +9,12 @@ Component({
     },
     count: {
       type: Number
+    },
+    readOnly: {
+      type: Boolean
+    },
+    test: {
+      type: Object
     }
   },
 
@@ -25,6 +31,9 @@ Component({
    */
   methods: {
     onLink: function (event) {
+      if (this.properties.readOnly) {
+        return
+      }
       let _islike = this.properties.islike
       let _count = this.properties.count
       _islike ? _count-- : _count++

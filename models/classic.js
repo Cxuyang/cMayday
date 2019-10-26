@@ -30,6 +30,13 @@ class ClassicModel extends HTTP {
       sCallback(classic)
     }
   }
+  getMyFavor(success) {
+    const params = {
+      url: 'classic/favor',
+      success: success
+    }
+    this.request(params)
+  }
   isFirst(index) {
     return index === 1 ? true : false
   }
